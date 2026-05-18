@@ -5,6 +5,9 @@ A fluid, context-aware navigation engine for the **Fish shell** that lets you sl
 
 Built natively for Fish, utilizing modern event handling and asynchronous lazy-loading to keep your shell startup snappy.
 
+> **Meander** *(noun / verb)*
+> The natural looping, bending, and shifting of a fast-moving current when it hits physical boundaries. Instead of a rigid, straight-line trajectory, a meander adapts its flow dynamically based on the local terrain.
+
 ## 🚀 Speed Navigation
 
 *   **`Alt + Up`**: Escape to the parent directory (`cd ..`).
