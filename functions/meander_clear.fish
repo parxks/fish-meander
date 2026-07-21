@@ -1,5 +1,5 @@
-function meander_clear --description 'Reset meander history stacks'
-    set -U meander_history_back (pwd)
-    set -U meander_history_forward
-    echo "✓ Meander history cleared"
+function meander_clear
+    set -U meander_recent_children
+    __meander_reset_cycle
+    echo "meander cleared"
 end
