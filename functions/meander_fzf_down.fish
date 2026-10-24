@@ -8,7 +8,7 @@ function meander_fzf_down
     __meander_cycle_end
 
     set -l raw (__meander_children | string split0)
-    set -l children (__meander_sort_children $raw | string split0)
+    set -l children (__meander_sort_children $raw)
 
     switch (count $children)
         case 0

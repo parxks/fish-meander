@@ -1,12 +1,12 @@
 function __meander_sort_children
     set -l children $argv
     test (count $children) -gt 1; or begin
-        printf '%s\0' $children
+        test (count $children) -gt 0; and printf '%s\n' $children
         return
     end
 
     if test "$meander_sort_mode" = alphabetical
-        printf '%s\0' $children | sort -z
+        printf '%s\n' $children | sort
         return
     end
 
@@ -31,10 +31,11 @@ function __meander_sort_children
             set -l i 1
             while test $i -le (count $__meander_visit_path)
                 if test "$__meander_visit_path[$i]" = "$absolute"
-                    set score (math $score + $__meander_visit_count[$i] * 10)
+                    set -l visit_count_i $__meander_visit_count[$i]
+                    set score (math "$score + $visit_count_i * 10")
                     break
                 end
-                set i (math $i + 1)
+                set i (math "$i + 1")
             end
         end
 
@@ -43,10 +44,11 @@ function __meander_sort_children
             set -l i 1
             while test $i -le (count $__meander_recent_dirs)
                 if test "$__meander_recent_dirs[$i]" = "$absolute"
-                    set score (math $score + (count $__meander_recent_dirs) - $i)
+                    set -l recent_count (count $__meander_recent_dirs)
+                    set score (math "$score + $recent_count - $i")
                     break
                 end
-                set i (math $i + 1)
+                set i (math "$i + 1")
             end
         end
 
