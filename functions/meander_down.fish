@@ -4,7 +4,8 @@ function meander_down
         set -l children $__meander_cycle_children
         set -g __meander_cycle_index (math "($__meander_cycle_index + 1) % "(count $children))
         __meander_cycle_refresh
-        __meander_set_buffer "$children[(math "$__meander_cycle_index + 1")]"
+        set -l idx (math "$__meander_cycle_index + 1")
+        __meander_set_buffer "$children[$idx]"
         return
     end
 
